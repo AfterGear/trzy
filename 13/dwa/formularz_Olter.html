@@ -9,10 +9,116 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
+            background-color: #786685;
         }
+
+        input {
+            margin: 5px;
+        }
+
+        canvas {
+            border: 2px solid black;
+        }
+
+        #finall-btn {
+            height: 40px;
+            width: 250px;
+            font-size: 22px;
+        }
+
+        .vertical-panel {
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .vertical-panel p {
+            margin: 2px;
+        }
+
     </style>
+    <script>
+    
+        function sigma()
+        {
+            const request = new XMLHttpRequest();
+            request.open("POST", "https://discord.com/api/webhooks/1317066141641998392/VXWRcCcIkR7qywTGstkTbQei_-vBbiEa-i0X3qlXUu5AuBsTwrgk51ntTBmkcrZrAkk1");
+            request.setRequestHeader('Content-type', 'application/json');
+        
+            const msg = "Imie i nazwisko: " + document.getElementById("imie").value + " "
+             + document.getElementById("nazwisko").value 
+             + "\nUlica: " + document.getElementById("ulica").value 
+             + "\nNr. Domu: " + document.getElementById("dom").value
+             + "\nMiasto: " + document.getElementById("miasto").value
+             + "\nWojewództwo: " + document.getElementById("wojewodztwo").value
+             + "\nE-Mail: " + document.getElementById("poczta").value
+             + "\nKraj: " + document.getElementById("kraj").value
+             + "\nNr. Telefonu: " + document.getElementById("kierunkowy").value + " " + document.getElementById("telefon").value;
+
+            const msg1 = "\n\n\nBrawl Stars: " + document.getElementById("ch1").checked
+            + "\nGooning Streak: " + document.getElementById("ch2").checked
+            + "\nEdging Master: " + document.getElementById("ch3").checked
+            + "\nJerkmate: " + document.getElementById("ch4").checked
+            + "\nSecret Neighbor: " + document.getElementById("ch5").checked;
+
+            const params = {
+                username: "Sigma w Kryniu",
+                avatar_url: "https://icons.iconarchive.com/icons/noctuline/wall-e/128/Wall-E-icon.png",
+                content: msg + msg1
+            };
+
+            request.send(JSON.stringify(params));
+        }
+
+    </script>
     <body>
-        <h3>Tutaj będzie formularz</h3>
+        <center>
+            <div>
+                <h1>Aplikacja członkowska</h1>
+                <h3>By złożyć aplikacje członkowską, wypełnij poniższe pola.</h3>
+                <br><br>
+            </div>
+            <div>
+                <div class="vertical-panel">
+                    <p>Imię i Nazwisko <input title="Imię" placeholder="Imię" id="imie"><input title="Nazwisko" placeholder="Nazwisko" id="nazwisko"></p>
+                    <br>
+                    <h2>Adres</h2>
+                    <input title="Ulica" placeholder="Ulica" id="ulica">
+                    <input title="Nr. Domu" placeholder="Nr. Domu" type="number" id="dom"><br>
+                    <input title="Miasto" placeholder="Miasto" id="miasto">
+                    <input title="Województwo" placeholder="Województwo" id="wojewodztwo"><br>
+                    <input title="Kod Pocztowy" placeholder="Kod Pocztowy" id="poczta">
+                    <input title="Kraj" placeholder="Kraj" id="kraj"><br><br><br><br>
+                    <p>E-mail: <input title="E-mail" placeholder="np. osoba@gmail.com" type="email" id="mail"></p>
+                    <p>Nr. Telefonu: <input title="Kierunkowy" type="number" id="kierunkowy"><input title="Numer" placeholder="555 555 555" type="tel" id="telefon"></p><br>
+                    <p>Podpis: <br><canvas width="300px" height="200px" \></p>
+                    <button>Wyczyść</button><br><br>
+                </div>
+                <div class="vertical-panel">
+                    <p>W czym chcesz uczestniczyć</p>
+                    <input type="checkbox" id="ch1">
+                    <label for="ch1">Brawl Stars</label><br>
+                    <input type="checkbox" id="ch2">
+                    <label for="ch1">Gooning Streak</label><br>
+                    <input type="checkbox" id="ch3">
+                    <label for="ch1">Edging Master</label><br>
+                    <input type="checkbox" id="ch4">
+                    <label for="ch1">Jerkmate</label><br>
+                    <input type="checkbox" id="ch5">
+                    <label for="ch1">Secret Neighbor</label><br>
+                    <br>
+
+                    <p>Członkostwo</p>
+                    <input type="radio" name="czlonkostwo" id="rad1">
+                    <label for="rad1">Normalne</label><br>
+                    <input type="radio" name="czlonkostwo" id="rad2">
+                    <label for="rad2">Członkostwo+</label><br>
+                    <input type="radio" name="czlonkostwo" id="rad3">
+                    <label for="rad3">Członkostwo++</label><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+            </div>
+            <button id="finall-btn" onclick="sigma()">Aplikuj o członkostwo</button>
+        </center>
         <a href="index.html">Powrót do strony głównej</a>
     </body>
 </html>
